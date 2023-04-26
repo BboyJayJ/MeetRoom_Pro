@@ -1,0 +1,69 @@
+﻿@page
+@model MJ_Rent_Login.Pages.BorrowRecords.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+<h3>會議室借用紀錄</h3>
+
+<p>
+    <a asp-page="Create">新增借用紀錄</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.BorrowRecord[0].RoomId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BorrowRecord[0].UserId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BorrowRecord[0].BorrowDateTime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BorrowRecord[0].PrevBorrowTime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BorrowRecord[0].ActualBorrowTime)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.BorrowRecord) {
+            int roomId1 = item.RoomId;
+
+            var queryRoomName1 = from room in Model._context.MeetRoom
+                                where room.Id == roomId1
+                                select room.Name;
+
+            //string RoomName = (queryRoomName1.First());
+            string RoomName1 = queryRoomName1.FirstOrDefault();
+        <tr>
+            <td>
+                 @RoomName1 (@Html.DisplayFor(modelItem => item.RoomId))
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BorrowDateTime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PrevBorrowTime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ActualBorrowTime)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.Id">編輯</a> |
+                <a asp-page="./Details" asp-route-id="@item.Id">詳細資料</a> |
+                <a asp-page="./Delete" asp-route-id="@item.Id">刪除</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

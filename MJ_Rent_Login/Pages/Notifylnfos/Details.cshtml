@@ -1,0 +1,38 @@
+﻿@page
+@model MJ_Rent_Login.Pages.Notifylnfos.DetailsModel
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+<h3>詳細資料</h3>
+
+<div>
+    
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Notifylnfo.UserId)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Notifylnfo.UserId)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Notifylnfo.InfoContext)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Notifylnfo.InfoContext)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Notifylnfo.HaveNotify)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Notifylnfo.HaveNotify)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-page="./Edit" asp-route-id="@Model.Notifylnfo?.Id">編輯</a> |
+    <a asp-page="./Index">返回列表</a>
+</div>

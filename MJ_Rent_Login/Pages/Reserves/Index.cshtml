@@ -1,0 +1,64 @@
+﻿@page
+@model MJ_Rent_Login.Pages.Reserves.IndexModel
+
+@{
+    ViewData["Title"] = "預約會議室列表";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+<h3>預約會議室列表</h3>
+
+<p>
+    <a asp-page="Create">新增預約</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Reserve[0].RoomId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Reserve[0].UserId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Reserve[0].ResDateTime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Reserve[0].ResTimeLength)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Reserve) {
+            // 在此做 LINQ Query
+            int roomId = item.RoomId;
+
+            var queryRoomName = from m in Model._context.MeetRoom
+                                where m.Id == roomId
+                                select m.Name;
+
+            string RoomName = (queryRoomName.First());
+            //string RoomName = queryRoomName.FirstOrDefault();
+        <tr>
+            <td>
+                @RoomName (@Html.DisplayFor(modelItem => item.RoomId))
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ResDateTime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ResTimeLength)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.Id">編輯</a> |
+                <a asp-page="./Details" asp-route-id="@item.Id">詳細資料</a> |
+                <a asp-page="./Delete" asp-route-id="@item.Id">刪除</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

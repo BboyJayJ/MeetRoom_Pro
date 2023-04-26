@@ -1,0 +1,49 @@
+﻿@page
+@model MJ_Rent_Login.Pages.Notifylnfos.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+<h3>通知列表</h3>
+
+<p>
+    <a asp-page="Create">新增通知</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Notifylnfo[0].UserId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Notifylnfo[0].InfoContext)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Notifylnfo[0].HaveNotify)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Notifylnfo) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.InfoContext)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.HaveNotify)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.Id">編輯</a> |
+                <a asp-page="./Details" asp-route-id="@item.Id">詳細資料</a> |
+                <a asp-page="./Delete" asp-route-id="@item.Id">刪除</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

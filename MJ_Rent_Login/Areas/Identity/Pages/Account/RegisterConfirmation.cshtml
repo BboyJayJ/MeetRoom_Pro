@@ -1,0 +1,23 @@
+﻿@page
+@model RegisterConfirmationModel
+@{
+    ViewData["Title"] = "註冊成功!";
+}
+
+<h3>@ViewData["Title"]</h3>
+@{
+    if (@Model.DisplayConfirmAccountLink)
+    {
+<p>
+
+            通過電子郵件發送: <a id="confirm-link" href="@Model.EmailConfirmationUrl">單擊此處確認您的帳戶</a>
+</p>
+    }
+    else
+    {
+<p>
+        Please check your email to confirm your account.
+</p>
+    }
+}
+

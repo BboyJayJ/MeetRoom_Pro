@@ -1,0 +1,45 @@
+﻿@page
+@model MJ_Rent_Login.Pages.Notifylnfos.CreateModel
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+<h3>新增通知</h3>
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Notifylnfo.UserId" class="control-label"></label>
+                <!--<input asp-for="Notifylnfo.UserId" class="form-control" />-->
+                <select asp-for="Notifylnfo.UserId" asp-items="Model.UserIds" class="form-control"></select>
+                <span asp-validation-for="Notifylnfo.UserId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Notifylnfo.InfoContext" class="control-label"></label>
+                <input asp-for="Notifylnfo.InfoContext" class="form-control" />
+                <span asp-validation-for="Notifylnfo.InfoContext" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="Notifylnfo.HaveNotify" /> @Html.DisplayNameFor(model => model.Notifylnfo.HaveNotify)
+                </label>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="新增" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="Index">返回列表</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

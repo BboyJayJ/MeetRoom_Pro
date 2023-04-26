@@ -1,0 +1,43 @@
+﻿@page
+@model MJ_Rent_Login.Pages.Reserves.DetailsModel
+
+@{
+    ViewData["Title"] = "詳細資料";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+<h3>詳細資料</h3>
+
+<div>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Reserve.RoomId)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Reserve.RoomId)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Reserve.UserId)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Reserve.UserId)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Reserve.ResDateTime)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Reserve.ResDateTime)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Reserve.ResTimeLength)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Reserve.ResTimeLength)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-page="./Edit" asp-route-id="@Model.Reserve?.Id">編輯</a> |
+    <a asp-page="./Index">返回列表</a>
+</div>

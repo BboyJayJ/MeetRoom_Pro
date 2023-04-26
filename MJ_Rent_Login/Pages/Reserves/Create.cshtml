@@ -1,0 +1,67 @@
+﻿@page
+@model MJ_Rent_Login.Pages.Reserves.CreateModel
+
+@{
+    ViewData["Title"] = "新增預約";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+<h3>新增預約</h3>
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Reserve.RoomId" class="control-label"></label>
+               <!-- <input asp-for="Reserve.RoomId" class="form-control" />-->
+                <span asp-validation-for="Reserve.RoomId" class="text-danger"></span>
+                <select asp-for="Reserve.RoomId" asp-items="Model.Ids" class="form-control"></select>
+
+
+            </div>
+            <div class="form-group">
+                <label asp-for="Reserve.UserId" class="control-label"></label>
+                <input asp-for="Reserve.UserId" class="form-control" />            
+                <span asp-validation-for="Reserve.UserId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Reserve.ResDateTime" class="control-label"></label>
+                <input asp-for="Reserve.ResDateTime" class="form-control" />
+                <span asp-validation-for="Reserve.ResDateTime" class="text-danger"></span>
+            </div>
+                
+            <div class="form-group">
+                <label asp-for="Reserve.ResTimeLength" class="control-label"></label>
+
+                    <select asp-for="Reserve.ResTimeLength" class="form-control">
+                        <option value="30">30分鐘</option>
+                        <option value="60">60分鐘</option>
+                        <option value="90">90分鐘</option>
+                        <option value="120">120分鐘</option>
+                        <option value="150">150分鐘</option>
+                        <option value="180">180分鐘</option>
+                        <option value="480">480分鐘</option>
+                    </select>
+
+                   
+                <!--
+                <input asp-for="Reserve.ResTimeLength" class="form-control" />
+                -->
+                <span asp-validation-for="Reserve.ResTimeLength" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="新增" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="Index">返回列表</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

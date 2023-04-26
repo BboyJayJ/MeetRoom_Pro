@@ -1,0 +1,14 @@
+﻿@page
+@model AccessDeniedModel
+@{
+    ViewData["Title"] = "拒絕訪問";
+}
+
+<header>
+    <h1 class="text-danger">@ViewData["Title"]</h1>
+    <p class="text-danger">您無權訪問此資源。</p>
+</header>
+
+<div>
+    <a asp-page="/Index">返回首頁</a>
+</div>

@@ -1,0 +1,56 @@
+﻿@page
+@model MJ_Rent_Login.Pages.BorrowRecords.EditModel
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+<h3>編輯</h3>
+
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="BorrowRecord.Id" />
+            <div class="form-group">
+                <label asp-for="BorrowRecord.RoomId" class="control-label"></label>
+                <input asp-for="BorrowRecord.RoomId" readonly class="form-control" />
+                <span asp-validation-for="BorrowRecord.RoomId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BorrowRecord.UserId" class="control-label"></label>
+                <input asp-for="BorrowRecord.UserId" class="form-control" />
+                <span asp-validation-for="BorrowRecord.UserId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BorrowRecord.BorrowDateTime" class="control-label"></label>
+                <input asp-for="BorrowRecord.BorrowDateTime" class="form-control" />
+                <span asp-validation-for="BorrowRecord.BorrowDateTime" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BorrowRecord.PrevBorrowTime" class="control-label"></label>
+                <input asp-for="BorrowRecord.PrevBorrowTime" class="form-control" />
+                <span asp-validation-for="BorrowRecord.PrevBorrowTime" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BorrowRecord.ActualBorrowTime" class="control-label"></label>
+                <input asp-for="BorrowRecord.ActualBorrowTime" class="form-control" />
+                <span asp-validation-for="BorrowRecord.ActualBorrowTime" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="儲存" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="./Index">返回列表</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
