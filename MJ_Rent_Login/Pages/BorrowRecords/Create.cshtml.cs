@@ -32,8 +32,8 @@ namespace MJ_Rent_Login.Pages.BorrowRecords
 
             Id1 = new SelectList(query, "Id", "Name");
 
-            var UserId_query1 = from user in _context.Reserve
-                               select user.UserId;
+            var UserId_query1 = (from user in _context.Reserve
+                               select user.UserId).Distinct();
 
             UserId1 = new SelectList(UserId_query1, "UserId");
 

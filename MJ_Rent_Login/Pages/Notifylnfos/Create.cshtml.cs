@@ -25,8 +25,8 @@ namespace MJ_Rent_Login.Pages.Notifylnfos
 
         public IActionResult OnGet()
         {
-            var UserId_query = from m in _context.Reserve
-                               select m.UserId;
+            var UserId_query = (from m in _context.Reserve
+                               select m.UserId).Distinct();
 
             UserIds = new SelectList(UserId_query, "UserId");
 
